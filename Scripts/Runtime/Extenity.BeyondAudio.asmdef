@@ -1,0 +1,17 @@
+{
+    "name": "Extenity.BeyondAudio",
+    "references": [
+        "Extenity.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "BeyondAudioUsesUnityAudio"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

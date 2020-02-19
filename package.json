@@ -1,0 +1,15 @@
+{
+    "name": "com.canbaycay.extenity.beyondaudio.unityaudio",
+    "displayName": "Extenity BeyondAudio Unity",
+    "version": "0.1.2",
+    "unity": "2019.3",
+    "description": "A delicious common utilities library, best served cold. Years of Unity experience blended into a triple-berry smoothie.",
+    "keywords": [
+        "audio",
+        "common",
+        "utility",
+        "tool",
+        "library"
+    ],
+    "category": "Utility"
+}
