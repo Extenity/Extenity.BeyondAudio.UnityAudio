@@ -1,7 +1,8 @@
 {
     "name": "Extenity.BeyondAudio",
     "references": [
-        "Extenity.Core"
+        "Extenity.Core",
+        "Extenity.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
