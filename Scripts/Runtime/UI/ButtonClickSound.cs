@@ -5,6 +5,7 @@ using Extenity.DataToolbox;
 using Extenity.UIToolbox;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Extenity.BeyondAudio.UI
@@ -20,6 +21,7 @@ namespace Extenity.BeyondAudio.UI
 	{
 		public Button Button;
 		public Toggle Toggle;
+		[FormerlySerializedAs("EventName")]
 		public string SoundEvent;
 		public ButtonClickSoundAction Action = ButtonClickSoundAction.Up;
 
