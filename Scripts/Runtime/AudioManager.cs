@@ -119,7 +119,7 @@ namespace Extenity.BeyondAudio
 
 		private RangeInt GetDeviceVolumeRange()
 		{
-			Log.Info("## GetDeviceVolumeRange");
+			Log.Info("GetDeviceVolumeRange");
 			var min = AndroidAudioService.Call<int>("getStreamMinVolume", ANDROID_STREAM_MUSIC);
 			var max = AndroidAudioService.Call<int>("getStreamMaxVolume", ANDROID_STREAM_MUSIC);
 			Log.Info($"Android device volume range: {min}-{max}", this);
@@ -128,7 +128,7 @@ namespace Extenity.BeyondAudio
 
 		private int GetDeviceVolume()
 		{
-			Log.Info("## GetDeviceVolume");
+			Log.Info("GetDeviceVolume");
 			var volume = AndroidAudioService.Call<int>("getStreamVolume", ANDROID_STREAM_MUSIC);
 			Log.Info($"Android device volume: {volume}", this);
 			return volume;
@@ -136,7 +136,7 @@ namespace Extenity.BeyondAudio
 
 		public float GetDeviceVolumeNormalized()
 		{
-			Log.Info("## GetDeviceVolumeNormalized");
+			Log.Info("GetDeviceVolumeNormalized");
 			var range = GetDeviceVolumeRange();
 			var volume = GetDeviceVolume();
 			var normalizedVolume = (volume - range.start) / (float)range.length;
@@ -149,7 +149,7 @@ namespace Extenity.BeyondAudio
 		/// </summary>
 		private int SetDeviceVolume(int volume)
 		{
-			Log.Info("## SetDeviceVolume   volume: " + volume);
+			Log.Info("SetDeviceVolume   volume: " + volume);
 			AndroidAudioService.Call("setStreamVolume", ANDROID_STREAM_MUSIC, volume, ANDROID_SETSTREAMVOLUME_FLAGS);
 			var newVolume = GetDeviceVolume();
 			if (newVolume == volume)
@@ -168,7 +168,7 @@ namespace Extenity.BeyondAudio
 		/// </summary>
 		public float SetDeviceVolumeNormalized(float normalizedVolume)
 		{
-			Log.Info("## SetDeviceVolumeNormalized   normalizedVolume: " + normalizedVolume);
+			Log.Info("SetDeviceVolumeNormalized   normalizedVolume: " + normalizedVolume);
 			var range = GetDeviceVolumeRange();
 			var volume = range.start + (int)(range.length * normalizedVolume);
 			var newVolume = SetDeviceVolume(volume);
