@@ -486,11 +486,14 @@ namespace Extenity.BeyondAudio
 		/// Exact copy of Events list with only names. This list is automatically generated.
 		/// </summary>
 		[HideInInspector]
+		[SerializeField]
 		public string[] EventNames;
 
 		private void RefreshEventNamesList()
 		{
-			EventNames = Events.Select(item => item.Name).ToArray();
+			EventNames = Events.Where(item => item != null)
+			                   .Select(item => item.Name)
+			                   .ToArray();
 		}
 
 		public AudioEvent GetEvent(string eventName, bool errorIfNotFound)
