@@ -651,6 +651,7 @@ namespace Extenity.BeyondAudio
 			audioSource.pitch = pitch;
 			audioSource.volume = volume;
 			audioSource.spatialBlend = spatialBlend;
+			audioSource.enabled = true;
 			audioSource.gameObject.SetActive(true);
 			audioSource.Play();
 		}
