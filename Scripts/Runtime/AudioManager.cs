@@ -30,7 +30,7 @@ namespace Extenity.BeyondAudio
 
 		private void Awake()
 		{
-			InitializeSingleton(true);
+			InitializeSingleton();
 			Log.RegisterPrefix(this, "Audio");
 
 			CalculateEventInternals();
