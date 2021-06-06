@@ -28,9 +28,8 @@ namespace Extenity.BeyondAudio
 
 		#region Initialization
 
-		private void Awake()
+		protected override void AwakeDerived()
 		{
-			InitializeSingleton();
 			Log.RegisterPrefix(this, "Audio");
 
 			CalculateEventInternals();
