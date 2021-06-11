@@ -1,5 +1,6 @@
 {
     "name": "Extenity.BeyondAudio.Editor",
+    "rootNamespace": "",
     "references": [
         "Extenity.BeyondAudio",
         "Extenity.Core",
