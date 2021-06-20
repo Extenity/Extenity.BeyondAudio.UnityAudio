@@ -526,7 +526,7 @@ namespace Extenity.BeyondAudio
 					if (!audioEvent.Output)
 					{
 						if (list == null)
-							list = new List<AudioEvent>(10);
+							list = New.List<AudioEvent>(10);
 						list.Add(audioEvent);
 					}
 				}
@@ -545,7 +545,7 @@ namespace Extenity.BeyondAudio
 					if (audioEvent.HasAnyUnassignedClip)
 					{
 						if (list == null)
-							list = new List<AudioEvent>(10);
+							list = New.List<AudioEvent>(10);
 						list.Add(audioEvent);
 					}
 				}

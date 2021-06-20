@@ -65,6 +65,7 @@ namespace Extenity.BeyondAudio.Editor
 				{
 					EditorGUILayout.HelpBox($"There are '{eventsWithUnassignedOutputs.Count}' event(s) with unassigned outputs:\n\n{eventsWithUnassignedOutputs.Select(item => "   " + item.Name).ToList().Serialize('\n')}", MessageType.Warning);
 					GUILayout.Space(20f);
+					Release.List(ref eventsWithUnassignedOutputs);
 				}
 			}
 
@@ -75,6 +76,7 @@ namespace Extenity.BeyondAudio.Editor
 				{
 					EditorGUILayout.HelpBox($"There are '{eventsWithUnassignedClips.Count}' event(s) with unassigned clips:\n\n{eventsWithUnassignedClips.Select(item => "   " + item.Name).ToList().Serialize('\n')}", MessageType.Warning);
 					GUILayout.Space(20f);
+					Release.List(ref eventsWithUnassignedClips);
 				}
 			}
 		}
