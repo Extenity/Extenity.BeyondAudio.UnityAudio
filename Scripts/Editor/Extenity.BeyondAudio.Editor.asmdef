@@ -4,7 +4,8 @@
     "references": [
         "Extenity.BeyondAudio",
         "Extenity.Core",
-        "Extenity.Core.Editor"
+        "Extenity.Core.Editor",
+        "Unity.Mathematics"
     ],
     "includePlatforms": [
         "Editor"

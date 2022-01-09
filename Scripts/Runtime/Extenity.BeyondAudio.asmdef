@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Extenity.Core",
-        "Extenity.UI"
+        "Extenity.UI",
+        "Unity.Mathematics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
