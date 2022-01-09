@@ -10,6 +10,7 @@ using Extenity.DesignPatternsToolbox;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
+using static Unity.Mathematics.math;
 
 namespace Extenity.BeyondAudio
 {
@@ -304,7 +305,7 @@ namespace Extenity.BeyondAudio
 
 		public static float NormalizedToDbRange(float normalized)
 		{
-			normalized = Mathf.Pow(normalized, 1f / 3f);
+			normalized = pow(normalized, 1f / 3f);
 			var db = (1f - normalized) * VolumeAdjustmentDb;
 			if (db < VolumeAdjustmentDb)
 				return VolumeAdjustmentDb;
