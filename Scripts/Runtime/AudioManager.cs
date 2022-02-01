@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Extenity.ApplicationToolbox;
 using Extenity.DataToolbox;
+using Extenity.DebugToolbox;
 using Extenity.DesignPatternsToolbox;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -31,7 +32,7 @@ namespace Extenity.BeyondAudio
 
 		protected override void AwakeDerived()
 		{
-			Log.RegisterPrefix(this, "Audio");
+			gameObject.SetAsLogContext(ref Log);
 
 			CalculateEventInternals();
 			// InitializeIncidentTracker();
@@ -119,28 +120,25 @@ namespace Extenity.BeyondAudio
 
 		private RangeInt GetDeviceVolumeRange()
 		{
-			Log.Info("GetDeviceVolumeRange");
 			var min = AndroidAudioService.Call<int>("getStreamMinVolume", ANDROID_STREAM_MUSIC);
 			var max = AndroidAudioService.Call<int>("getStreamMaxVolume", ANDROID_STREAM_MUSIC);
-			Log.Info($"Android device volume range: {min}-{max}", this);
+			Log.Verbose($"Android device volume range: {min}-{max}");
 			return new RangeInt(min, max - min);
 		}
 
 		private int GetDeviceVolume()
 		{
-			Log.Info("GetDeviceVolume");
 			var volume = AndroidAudioService.Call<int>("getStreamVolume", ANDROID_STREAM_MUSIC);
-			Log.Info($"Android device volume: {volume}", this);
+			Log.Verbose($"Android device volume: {volume}");
 			return volume;
 		}
 
 		public float GetDeviceVolumeNormalized()
 		{
-			Log.Info("GetDeviceVolumeNormalized");
 			var range = GetDeviceVolumeRange();
 			var volume = GetDeviceVolume();
 			var normalizedVolume = (volume - range.start) / (float)range.length;
-			Log.Info($"Android device normalized volume: {normalizedVolume}", this);
+			Log.Verbose($"Android device normalized volume: {normalizedVolume}");
 			return volume;
 		}
 
@@ -149,16 +147,15 @@ namespace Extenity.BeyondAudio
 		/// </summary>
 		private int SetDeviceVolume(int volume)
 		{
-			Log.Info("SetDeviceVolume   volume: " + volume);
 			AndroidAudioService.Call("setStreamVolume", ANDROID_STREAM_MUSIC, volume, ANDROID_SETSTREAMVOLUME_FLAGS);
 			var newVolume = GetDeviceVolume();
 			if (newVolume == volume)
 			{
-				Log.Info($"Android device volume set to: {newVolume}", this);
+				Log.Verbose($"Android device volume set to: {newVolume}");
 			}
 			else
 			{
-				Log.Warning($"Failed to set Android device volume to '{volume}'. Currently '{newVolume}'", this);
+				Log.Warning($"Failed to set Android device volume to '{volume}'. Currently '{newVolume}'");
 			}
 			return newVolume;
 		}
@@ -168,7 +165,6 @@ namespace Extenity.BeyondAudio
 		/// </summary>
 		public float SetDeviceVolumeNormalized(float normalizedVolume)
 		{
-			Log.Info("SetDeviceVolumeNormalized   normalizedVolume: " + normalizedVolume);
 			var range = GetDeviceVolumeRange();
 			var volume = range.start + (int)(range.length * normalizedVolume);
 			var newVolume = SetDeviceVolume(volume);
@@ -284,7 +280,7 @@ namespace Extenity.BeyondAudio
 				if (volumeControl.MixerParameterName == mixerParameterName)
 					return volumeControl;
 			}
-			Log.CriticalError($"Volume control '{mixerParameterName}' does not exist.", this);
+			Log.CriticalError($"Volume control '{mixerParameterName}' does not exist.");
 			return null;
 		}
 
@@ -356,7 +352,7 @@ namespace Extenity.BeyondAudio
 				if (reusedAudioSource)
 				{
 					if (EnableVerboseLogging)
-						Log.Info($"Reusing audio source '{reusedAudioSource.gameObject.FullName()}'.", this);
+						Log.Info($"Reusing audio source '{reusedAudioSource.gameObject.FullName()}'.");
 					ActiveAudioSources.Add(reusedAudioSource);
 					return reusedAudioSource;
 				}
@@ -370,7 +366,7 @@ namespace Extenity.BeyondAudio
 			ActiveAudioSources.Add(audioSource);
 			// AudioSourceBag.Add(go.GetInstanceID(), audioSource);
 			if (EnableVerboseLogging)
-				Log.Info($"Created audio source '{go.FullName()}'.", this);
+				Log.Info($"Created audio source '{go.FullName()}'.");
 			return audioSource;
 		}
 
@@ -409,7 +405,7 @@ namespace Extenity.BeyondAudio
 		{
 			if (!ActiveAudioSources.Contains(audioSource))
 			{
-				Log.Info($"Tried to release audio source '{(audioSource ? audioSource.gameObject.name : "N/A")}' while it's not active.", this);
+				Log.Info($"Tried to release audio source '{(audioSource ? audioSource.gameObject.name : "N/A")}' while it's not active.");
 				return;
 			}
 			if (EnableVerboseLogging)
@@ -446,7 +442,7 @@ namespace Extenity.BeyondAudio
 		private void ClearLostReferencesInAllInternalContainers()
 		{
 			if (EnableVerboseLogging)
-				Log.Info("Clearing lost references.", this);
+				Log.Info("Clearing lost references.");
 
 			ClearLostReferencesInActiveAudioSourcesList();
 			ClearLostReferencesInFreeAudioSourcesList();
@@ -1009,7 +1005,7 @@ namespace Extenity.BeyondAudio
 				{
 					if (ReportedIncidents.Add((occurrenceID, occurrenceType))) // This is here to block repetitive logs. Do not log an incident more than once.
 					{
-						Log.Any($"Heavy use of '{occurrenceType}' for '{BuildLogString(occurrenceID)}' detected.", IncidentLogType, this);
+						Log.Any($"Heavy use of '{occurrenceType}' for '{BuildLogString(occurrenceID)}' detected.", IncidentLogType);
 					}
 				}
 			}
@@ -1038,6 +1034,12 @@ namespace Extenity.BeyondAudio
 		public bool EnableLogging = false;
 		public bool EnableVerboseLogging = false;
 		public bool EnableWarningLogging = true;
+
+		#endregion
+
+		#region Log
+
+		private static LogRep Log = new LogRep("Audio");
 
 		#endregion
 
