@@ -13,7 +13,7 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [
-        "BeyondAudioUsesUnityAudio"
+        "ExtenityAudio"
     ],
     "versionDefines": [],
     "noEngineReferences": false

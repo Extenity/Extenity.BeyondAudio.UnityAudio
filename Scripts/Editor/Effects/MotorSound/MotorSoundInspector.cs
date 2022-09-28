@@ -1,11 +1,11 @@
-﻿#if BeyondAudioUsesUnityAudio
+﻿#if ExtenityAudio
 
 using Extenity.IMGUIToolbox.Editor;
 using Extenity.UnityEditorToolbox.Editor;
 using UnityEngine;
 using UnityEditor;
 
-namespace Extenity.BeyondAudio.Effects.Editor
+namespace Extenity.Audio.Effects.Editor
 {
 
 	[CustomEditor(typeof(MotorSound))]

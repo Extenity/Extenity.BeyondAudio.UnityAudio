@@ -1,9 +1,9 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using Extenity.MathToolbox;
 using UnityEngine;
 
-namespace Extenity.BeyondAudio.Effects
+namespace Extenity.Audio.Effects
 {
 
 	public class ImpactSound : MonoBehaviour

@@ -1,9 +1,9 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using System;
 using UnityEngine;
 
-namespace Extenity.BeyondAudio
+namespace Extenity.Audio
 {
 
 	[Serializable]

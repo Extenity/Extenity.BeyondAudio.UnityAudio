@@ -1,8 +1,8 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using UnityEngine;
 
-namespace Extenity.BeyondAudio
+namespace Extenity.Audio
 {
 
 	public static class AudioTools

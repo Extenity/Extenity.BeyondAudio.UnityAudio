@@ -1,9 +1,9 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using Extenity.ReflectionToolbox;
 using UnityEditor;
 
-namespace Extenity.BeyondAudio.Editor
+namespace Extenity.Audio.Editor
 {
 
 	[InitializeOnLoad]

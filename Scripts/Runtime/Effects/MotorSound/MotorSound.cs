@@ -1,4 +1,4 @@
-﻿#if BeyondAudioUsesUnityAudio
+﻿#if ExtenityAudio
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using Extenity.MathToolbox;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Extenity.BeyondAudio.Effects
+namespace Extenity.Audio.Effects
 {
 
 	public class MotorSound : MonoBehaviour

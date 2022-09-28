@@ -1,4 +1,4 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using System;
 using System.Collections;
@@ -13,7 +13,7 @@ using UnityEngine.Audio;
 using UnityEngine.Events;
 using static Unity.Mathematics.math;
 
-namespace Extenity.BeyondAudio
+namespace Extenity.Audio
 {
 
 	public class AudioManager : SingletonUnity<AudioManager>, ISerializationCallbackReceiver

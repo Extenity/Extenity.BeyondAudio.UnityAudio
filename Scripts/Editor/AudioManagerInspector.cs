@@ -1,4 +1,4 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using System.Linq;
 using Extenity.DataToolbox;
@@ -7,7 +7,7 @@ using Extenity.UnityEditorToolbox.Editor;
 using UnityEngine;
 using UnityEditor;
 
-namespace Extenity.BeyondAudio.Editor
+namespace Extenity.Audio.Editor
 {
 
 	// TODO: Convert this to Odin Inspector.

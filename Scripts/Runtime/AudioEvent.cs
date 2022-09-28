@@ -1,4 +1,4 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using Extenity.UnityEditorToolbox;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Extenity.BeyondAudio
+namespace Extenity.Audio
 {
 
 	public enum AudioEventType

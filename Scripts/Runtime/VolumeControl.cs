@@ -1,4 +1,4 @@
-#if BeyondAudioUsesUnityAudio
+#if ExtenityAudio
 
 using System;
 using Extenity.DataToolbox;
@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 
-namespace Extenity.BeyondAudio
+namespace Extenity.Audio
 {
 
 	[Serializable]
